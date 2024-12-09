@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pokemon.spanishName %> - Pokédex</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <a href="/">Volver a la Pokédex</a>
+    <h1><%= pokemon.spanishName %></h1>
+  </header>
+
+  <div class="pokemon-details">
+    <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>">
+    <p>ID: <%= pokemon.id %></p>
+    <p>Altura: <%= pokemon.height %> m</p>
+    <p>Peso: <%= pokemon.weight %> kg</p>
+    <p>Tipos:</p>
+    <div class="pokemon-types">
+      <% pokemon.types.forEach((type) => { %>
+        <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
+      <% }); %>
+    </div>
+    <p>Estadísticas:</p>
+    <ul>
+      <li>HP: <%= pokemon.stats.hp %></li>
+      <li>Atack: <%= pokemon.stats.attack %></li>
+      <li>Defensa: <%= pokemon.stats.defense %></li>
+      <li>Velocidad: <%= pokemon.stats.speed %></li>
+      <li>Region: <%= pokemon.region %></li>
+    </ul>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Pokédex</h1>
+  </header>
+
+  <div class="pokemon-container">
+    <% Object.keys(pokemons).forEach((pokemonKey) => { 
+      const pokemon = pokemons[pokemonKey];
+    %>
+      <div class="pokemon-card">
+        <a href="/pokemon/<%= pokemonKey %>">
+          <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>">
+          <h3><%= pokemon.spanishName %></h3>
+        </a>
+        <div class="pokemon-types">
+          <% pokemon.types.forEach((type) => { %>
+            <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
+          <% }); %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
