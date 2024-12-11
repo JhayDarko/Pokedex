@@ -1,3 +1,31 @@
+:root {
+  --color-primary: #333333;
+  --color-secondary: #ffffff;
+  --color-background: #f4f4f9;
+  --color-white: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-hover: #121212;
+  
+  --color-grass: #78C850;
+  --color-fire: #F08030;
+  --color-water: #6890F0;
+  --color-electric: #F8D030;
+  --color-ice: #98D8D8;
+  --color-fighting: #C03028;
+  --color-poison: #A040A0;
+  --color-ground: #E0C068;
+  --color-flying: #A890F0;
+  --color-psychic: #F85888;
+  --color-bug: #A8B820;
+  --color-rock: #B8A038;
+  --color-ghost: #705898;
+  --color-dragon: #7038F8;
+  --color-dark: #705848;
+  --color-steel: #B8B8D0;
+  --color-fairy: #EE99AC;
+  --color-normal: #A8A878;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -5,10 +33,10 @@ html, body {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  background-color: var(--color-background);
   margin: 0;
   padding: 0;
-  padding-top: 135px;
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
 }
@@ -18,7 +46,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffcb00;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   padding: 20px;
   text-align: center;
   z-index: 1000;
@@ -29,22 +58,28 @@ header h1 {
   margin: 0;
 }
 
-header input {
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 1rem;
+.searchbar {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-top: 0;
+  padding: 5px;
+  margin-bottom: 0px;
+  box-shadow: 0 0 10px var(--color-shadow);
+}
+
+#search {
+  border-radius: 20px;
+  height: 40px;
   width: 80%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .generation {
   margin: 20px 0;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--color-shadow);
 }
 
 .generation-header {
@@ -53,8 +88,8 @@ header input {
   margin: 0;
   margin-bottom: 15px;
   padding: 10px;
-  background-color: #ffcb00;
-  color: #333;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   border-radius: 10px 10px 0 0;
   text-align: left;
   display: flex;
@@ -62,7 +97,7 @@ header input {
 }
 
 .generation-header:hover {
-  background-color: #e5b800;
+  background-color: var(--color-hover);
 }
 
 .toggle-icon {
@@ -72,7 +107,7 @@ header input {
   margin-right: 10px;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-top: 7px solid #333;
+  border-top: 7px solid var(--color-secondary);
   transition: transform 0.3s ease;
 }
 
@@ -94,7 +129,7 @@ header input {
 .generation h2 {
   text-align: center;
   font-size: 1.8rem;
-  color: #333;
+  color: var(--color-secondary);
 }
 
 .pokemon-container {
@@ -105,7 +140,7 @@ header input {
 }
 
 .pokemon-card {
-  background-color: white;
+  background-color: var(--color-white);
   padding: 0px;
   width: 160px;
   text-align: center;
@@ -114,7 +149,7 @@ header input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--color-shadow);
   transition: box-shadow 0.3s ease;
 }
 
@@ -148,8 +183,8 @@ header input {
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 0px;
-  color: white;
-  background-color: #333;
+  color: var(--color-white);
+  background-color: var(--color-secondary);
   padding: 5px;
   text-transform: capitalize;
 }
@@ -157,16 +192,16 @@ header input {
 .pokemon-card:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px var(--color-shadow);
 }
 
 footer {
-  background-color: #333;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   text-align: center;
   padding: 20px 0;
   margin-top: auto;
-  border-top: 5px solid #ffcb00;
+  border-top: 5px solid var(--color-hover);
 }
 
 .footer-content {
@@ -189,83 +224,157 @@ footer {
 
 .social-icon {
   font-size: 1.5rem;
-  color: white;
+  color: var(--color-white);
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .social-icon:hover {
-  color: #ffcb00;
+  color: var(--color-hover);
 }
 
 .pokemon-name.grass {
-  background-color: #78C850;
+  background-color: var(--color-grass);
 }
 
 .pokemon-name.fire {
-  background-color: #F08030;
+  background-color: var(--color-fire);
 }
 
 .pokemon-name.water {
-  background-color: #6890F0;
+  background-color: var(--color-water);
 }
 
 .pokemon-name.electric {
-  background-color: #F8D030;
+  background-color: var(--color-electric);
 }
 
 .pokemon-name.ice {
-  background-color: #98D8D8;
+  background-color: var(--color-ice);
 }
 
 .pokemon-name.fighting {
-  background-color: #C03028;
+  background-color: var(--color-fighting);
 }
 
 .pokemon-name.poison {
-  background-color: #A040A0;
+  background-color: var(--color-poison);
 }
 
 .pokemon-name.ground {
-  background-color: #E0C068;
+  background-color: var(--color-ground);
 }
 
 .pokemon-name.flying {
-  background-color: #A890F0;
+  background-color: var(--color-flying);
 }
 
 .pokemon-name.psychic {
-  background-color: #F85888;
+  background-color: var(--color-psychic);
 }
 
 .pokemon-name.bug {
-  background-color: #A8B820;
+  background-color: var(--color-bug);
 }
 
 .pokemon-name.rock {
-  background-color: #B8A038;
+  background-color: var(--color-rock);
 }
 
 .pokemon-name.ghost {
-  background-color: #705898;
+  background-color: var(--color-ghost);
 }
 
 .pokemon-name.dragon {
-  background-color: #7038F8;
+  background-color: var(--color-dragon);
 }
 
 .pokemon-name.dark {
-  background-color: #705848;
+  background-color: var(--color-dark);
 }
 
 .pokemon-name.steel {
-  background-color: #B8B8D0;
+  background-color: var(--color-steel);
 }
 
 .pokemon-name.fairy {
-  background-color: #EE99AC;
+  background-color: var(--color-fairy);
 }
 
 .pokemon-name.normal {
-  background-color: #A8A878;
+  background-color: var(--color-normal);
+}
+
+.sidebar-toggle {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.sidebar-toggle:hover {
+  background-color: var(--color-hover);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -500px;
+  height: 100%;
+  width: 300px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 2px 0 5px var(--color-shadow);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+  color: var(--color-hover);
+}
+
+.generation {
+  padding: 20px;
+  border: 1px solid var(--color-shadow);
+  margin-bottom: 20px;
 }

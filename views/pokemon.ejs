@@ -4,33 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= pokemon.spanishName %> - Pokédex</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles-pokemon.css">
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <%- include('partials/header') %>
+  <header>
+    <h1>Pokédex</h1>
+  </header>
+  <div class="pokemon-main-container">
+    <div class="pokemon-info-container">
+      <section class="pokemon-image-section">
+        <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>" class="pokemon-sprite">
+        <h2 class="pokemon-name"><%= pokemon.spanishName %> (#<%= pokemon.id %>)</h2>
+      </section>
 
-  <div class="pokemon-details">
-    <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>">
-    <p>ID: <%= pokemon.id %></p>
-    <p>Altura: <%= pokemon.height %> m</p>
-    <p>Peso: <%= pokemon.weight %> kg</p>
-    <p>Tipos:</p>
-    <div class="pokemon-types">
-      <% pokemon.types.forEach((type) => { %>
-        <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
-      <% }); %>
+      <section class="pokemon-stats-section">
+        <h2>Estadísticas</h2>
+        <canvas id="statsChart" width="300" height="300"></canvas>
+      </section>
+
+      <section class="pokemon-info-section">
+        <h2>Información General</h2>
+        <ul>
+          <li><strong>Altura:</strong> <%= pokemon.height %> m</li>
+          <li><strong>Peso:</strong> <%= pokemon.weight %> kg</li>
+          <li><strong>Generación:</strong> <%= pokemon.generation %></li>
+          <li><strong>Región:</strong> <%= pokemon.region %></li>
+          <li><strong>Color:</strong> <%= pokemon.color %></li>
+        </ul>
+      </section>
     </div>
-    <p>Estadísticas:</p>
-    <ul>
-      <li>HP: <%= pokemon.stats.hp %></li>
-      <li>Atack: <%= pokemon.stats.attack %></li>
-      <li>Defensa: <%= pokemon.stats.defense %></li>
-      <li>Velocidad: <%= pokemon.stats.speed %></li>
-      <li>Region: <%= pokemon.region %></li>
-    </ul>
   </div>
 
-  <script src="/js/script.js"></script>
+  <section class="pokemon-evolution-section">
+    <h2>Línea Evolutiva</h2>
+    <div class="evolution-chain">
+      <% pokemon.evolutionChain.forEach((evolution, index) => { %>
+        <div class="evolution">
+          <img src="/sprites/<%= evolution %>.png" alt="<%= evolution %>" class="evolution-sprite">
+          <% if (index < pokemon.evolutionChain.length - 1) { %>
+            <i class="fab fa-arrow-down"></i>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    const statsChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['HP', 'Ataque', 'Defensa', 'Ataque Especial', 'Defensa Especial', 'Velocidad'],
+        datasets: [{
+          label: '<%= pokemon.spanishName %>',
+          data: [
+            <%= pokemon.stats.hp %>,
+            <%= pokemon.stats.attack %>,
+            <%= pokemon.stats.defense %>,
+            <%= pokemon.stats['special-attack'] %>,
+            <%= pokemon.stats['special-defense'] %>,
+            <%= pokemon.stats.speed %>
+          ],
+          backgroundColor: 'rgba(0, 123, 255, 0.2)',
+          borderColor: 'rgba(0, 123, 255, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scale: {
+          ticks: { beginAtZero: true, max: 255 }
+        }
+      }
+    });
+  </script>
 
   <%- include('partials/footer') %>
 </body>

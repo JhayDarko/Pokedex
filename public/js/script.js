@@ -32,3 +32,16 @@ function toggleGeneration(generation) {
   const section = document.querySelector(`[data-generation="${generation}"]`);
   section.classList.toggle('collapsed');
 }
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+function scrollToSection(generation) {
+  const section = document.getElementById(`generation-${generation}`);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  toggleSidebar();
+}

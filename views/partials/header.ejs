@@ -1,5 +1,43 @@
 <header>
-    <h1>Pokédex</h1>
-    <input type="text" id="search" placeholder="Buscar Pokémon..." onkeyup="searchPokemon()">
-  </header>
-  
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+  <h1>Pokédex</h1>
+
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <ul class="sidebar-menu">
+      <% Object.keys(generations).forEach((generation) => { %>
+        <li>
+          <a href="#generation-<%= generation %>" onclick="scrollToSection('<%= generation %>')">Generación <%= generation %></a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <% Object.keys(generations).forEach((generation) => { %>
+    <section class="generation" id="generation-<%= generation %>" data-generation="<%= generation %>">
+      <div class="generation-header" onclick="toggleGeneration('<%= generation %>')">
+        <span class="toggle-icon"></span>
+        Generación <%= generation %>
+      </div>
+      <div class="pokemon-container">
+        <% generations[generation].forEach((pokemon) => { %>
+          <div class="pokemon-card">
+            <a href="/pokemon/<%= pokemon.key %>" class="pokemon-link">
+              <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>" class="pokemon-image">
+              <div class="pokemon-types">
+                <% pokemon.types.forEach((type) => { %>
+                  <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
+                <% }); %>
+              </div>
+              <div class="pokemon-name <%= pokemon.types[0] %>">
+                <%= pokemon.spanishName %>
+              </div>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  <% }); %>
+</main>
