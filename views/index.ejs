@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokédex</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <header>
-    <h1>Pokédex</h1>
-  </header>
+  <%- include('partials/header') %>
 
-  <div class="pokemon-container">
-    <% Object.keys(pokemons).forEach((pokemonKey) => { 
-      const pokemon = pokemons[pokemonKey];
-    %>
-      <div class="pokemon-card">
-        <a href="/pokemon/<%= pokemonKey %>">
-          <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>">
-          <h3><%= pokemon.spanishName %></h3>
-        </a>
-        <div class="pokemon-types">
-          <% pokemon.types.forEach((type) => { %>
-            <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
-          <% }); %>
-        </div>
+  <% Object.keys(generations).forEach((generation) => { %>
+    <section class="generation" data-generation="<%= generation %>">
+      <div class="generation-header" onclick="toggleGeneration('<%= generation %>')">
+        <span class="toggle-icon"></span>
+        Generación <%= generation %>
       </div>
-    <% }) %>
-  </div>
+      <div class="pokemon-container">
+        <% generations[generation].forEach((pokemon) => { %>
+          <div class="pokemon-card">
+            <a href="/pokemon/<%= pokemon.key %>" class="pokemon-link">
+              <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>" class="pokemon-image">
+              <div class="pokemon-types">
+                <% pokemon.types.forEach((type) => { %>
+                  <img src="/images/types/<%= type %>.png" alt="<%= type %>" class="type-icon">
+                <% }); %>
+              </div>
+              <div class="pokemon-name <%= pokemon.types[0] %>">
+                <%= pokemon.spanishName %>
+              </div>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  <% }); %>
 
-  <script src="/js/script.js"></script>
+      <script src="/js/script.js"></script>
+
+      <%- include('partials/footer') %>
 </body>
+
 </html>
