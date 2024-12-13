@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= pokemon.spanishName %> - Pokédex</title>
-  <link rel="stylesheet" href="/css/styles-pokemon.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <header>
-    <h1>Pokédex</h1>
-  </header>
+<body class="body-pokemon">
+  <%- include('partials/header-pokemon') %>
   <div class="pokemon-main-container">
     <div class="pokemon-info-container">
       <section class="pokemon-image-section">
-        <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>" class="pokemon-sprite">
-        <h2 class="pokemon-name"><%= pokemon.spanishName %> (#<%= pokemon.id %>)</h2>
+        <div class="pokemon-sprite">
+          <img src="<%= pokemon.sprite %>" alt="<%= pokemon.spanishName %>">
+        </div>
+        <div class="pokemon-image-info">
+          <h2><%= pokemon.spanishName %></h2>
+          <h2># <%= pokemon.id %></h2>
+        </div>
       </section>
 
       <section class="pokemon-stats-section">
