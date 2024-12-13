@@ -1,10 +1,10 @@
 :root {
-  --color-primary: #333333;
+  --color-primary: #121212;
   --color-secondary: #ffffff;
   --color-background: #f4f4f9;
-  --color-white: #ffffff;
   --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-hover: #121212;
+  --color-hover: #202020;
+  --color-inner-hover: #535353;
   
   --color-grass: #78C850;
   --color-fire: #F08030;
@@ -24,6 +24,11 @@
   --color-steel: #B8B8D0;
   --color-fairy: #EE99AC;
   --color-normal: #A8A878;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
 html, body {
@@ -47,50 +52,49 @@ header {
   left: 0;
   width: 100%;
   background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 20px;
+  color: var(--color-secondary);
   text-align: center;
   z-index: 1000;
 }
 
 header h1 {
   font-size: 2.5rem;
-  margin: 0;
+  margin: 10px;
 }
 
 .searchbar {
-  text-align: center;
-  background-color: #ffffff;
-  border-radius: 10px;
-  margin-top: 0;
-  padding: 5px;
-  margin-bottom: 0px;
-  box-shadow: 0 0 10px var(--color-shadow);
+  flex-grow: 1;
+  margin: 10px;
+  margin-bottom: 20px;
 }
 
-#search {
+.searchbar input {
+  width: 100%;
+  max-width: 300px;
+  padding: 5px 10px;
   border-radius: 20px;
-  height: 40px;
-  width: 80%;
+  border: none;
+  outline: none;
 }
 
 .generation {
-  margin: 20px 0;
-  padding: 10px;
-  background-color: var(--color-white);
+  background-color: var(--color-secondary);
   border-radius: 10px;
   box-shadow: 0 0 10px var(--color-shadow);
+  padding: 20px;
+  border: 1px solid var(--color-shadow);
+  margin: 5px;
+
 }
 
 .generation-header {
   cursor: pointer;
   font-size: 1.5rem;
-  margin: 0;
-  margin-bottom: 15px;
+  margin: -20px;
   padding: 10px;
   background-color: var(--color-primary);
   color: var(--color-secondary);
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   text-align: left;
   display: flex;
   align-items: center;
@@ -115,13 +119,6 @@ header h1 {
   transform: rotate(-90deg);
 }
 
-.generation .pokemon-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
 .generation.collapsed .pokemon-container {
   display: none;
 }
@@ -133,6 +130,7 @@ header h1 {
 }
 
 .pokemon-container {
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -140,7 +138,7 @@ header h1 {
 }
 
 .pokemon-card {
-  background-color: var(--color-white);
+  background-color: var(--color-secondary);
   padding: 0px;
   width: 160px;
   text-align: center;
@@ -183,7 +181,7 @@ header h1 {
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 0px;
-  color: var(--color-white);
+  color: var(--color-secondary);
   background-color: var(--color-secondary);
   padding: 5px;
   text-transform: capitalize;
@@ -197,7 +195,7 @@ header h1 {
 
 footer {
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-secondary);
   text-align: center;
   padding: 20px 0;
   margin-top: auto;
@@ -224,13 +222,13 @@ footer {
 
 .social-icon {
   font-size: 1.5rem;
-  color: var(--color-white);
+  color: var(--color-secondary);
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .social-icon:hover {
-  color: var(--color-hover);
+  color: var(--color-inner-hover);
 }
 
 .pokemon-name.grass {
@@ -307,10 +305,10 @@ footer {
 
 .sidebar-toggle {
   position: absolute;
-  left: 20px;
-  top: 15px;
+  left: 10px;
+  top: 10px;
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-secondary);
   border: none;
   padding: 10px 15px;
   font-size: 1.5rem;
@@ -326,15 +324,14 @@ footer {
 .sidebar {
   position: fixed;
   top: 0;
-  left: -500px;
+  left: -300px;
   height: 100%;
-  width: 300px;
+  width: 250px;
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-secondary);
   box-shadow: 2px 0 5px var(--color-shadow);
   transition: left 0.3s ease;
   z-index: 1000;
-  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -347,9 +344,14 @@ footer {
   align-self: flex-end;
   background: none;
   border: none;
-  color: var(--color-white);
+  color: var(--color-secondary);
   font-size: 1.5rem;
   cursor: pointer;
+  margin: 10px;
+}
+
+.close-btn:hover {
+  color: var(--color-inner-hover);
 }
 
 .sidebar-menu {
@@ -360,21 +362,18 @@ footer {
 
 .sidebar-menu li {
   margin-bottom: 15px;
+  border-bottom: 1px solid var(--color-inner-hover);
+  padding-bottom: 15px;
 }
 
 .sidebar-menu a {
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-secondary);
   font-size: 1.2rem;
   transition: color 0.3s ease;
+  padding: 5px 0;
 }
 
 .sidebar-menu a:hover {
-  color: var(--color-hover);
-}
-
-.generation {
-  padding: 20px;
-  border: 1px solid var(--color-shadow);
-  margin-bottom: 20px;
+  color: var(--color-inner-hover);
 }

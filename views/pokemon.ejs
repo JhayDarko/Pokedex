@@ -6,6 +6,7 @@
   <title><%= pokemon.spanishName %> - Pokédex</title>
   <link rel="stylesheet" href="/css/styles-pokemon.css">
   <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -44,7 +45,7 @@
         <div class="evolution">
           <img src="/sprites/<%= evolution %>.png" alt="<%= evolution %>" class="evolution-sprite">
           <% if (index < pokemon.evolutionChain.length - 1) { %>
-            <i class="fab fa-arrow-down"></i>
+            <i class="fa fa-arrow-right"></i>
           <% } %>
         </div>
       <% }) %>

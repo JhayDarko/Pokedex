@@ -12,11 +12,12 @@ function groupByGeneration(pokemonData) {
     const pokemon = pokemonData[pokemonKey];
     const gen = pokemon.generation;
 
-    if (!generations[gen]) {
+    if (!generations.hasOwnProperty(gen)) {
       generations[gen] = [];
     }
-
-    generations[gen].push({ key: pokemonKey, ...pokemon });
+    if (!generations[gen].some(p => p.key === pokemonKey)) {
+      generations[gen].push({ key: pokemonKey, ...pokemon });
+    }
   });
 
   return generations;

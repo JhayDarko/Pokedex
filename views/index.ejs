@@ -12,11 +12,8 @@
 
 <body>
   <%- include('partials/header') %>
-  <section class="searchbar">
-    <input type="text" id="search" placeholder="Buscar Pokémon..." onkeyup="searchPokemon()">
-    </section>
   <% Object.keys(generations).forEach((generation) => { %>
-    <section class="generation" data-generation="<%= generation %>">
+    <section class="generation" id="generation-<%= generation %>" data-generation="<%= generation %>">
       <div class="generation-header" onclick="toggleGeneration('<%= generation %>')">
         <span class="toggle-icon"></span>
         Generación <%= generation %>
